@@ -1,0 +1,36 @@
+1. Instalar NodeJS v9+ y npm
+
+
+2. In the project root
+- npm init
+
+3. Install Express
+- npm install express
+
+4. Generate Express Skeleton (only on new projects - Needs Root permisions)
+- npm install express-generator -g
+
+5. Crear una app con nombre Explorer
+- express explorer
+
+6. Instalar dependencias (dentro del root del proyecto)
+- npm install 
+
+7. Ejecutar prueba
+- DEBUG=explorer:* npm start
+
+8. Permitir que el server reinicie con cambios
+npm install --save-dev nodemon
+
+9. Ejecutar prueba del server
+DEBUG=explorer:* npm run devstart
+
+10. Instalar validator para manejar POSTS
+- npm install express-validator
+- npm install express-parameters
+
+11. Instalar libreria de IOTA
+- npm install iota.lib.js
+
+
+
