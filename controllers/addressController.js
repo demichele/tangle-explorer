@@ -36,18 +36,67 @@ var address = req.params.id;
     }else if(iota.valid.isHash(address)){
     
 
-    var bundle = iota.api.getBundle(address);
+    //var bundle = iota.api.getBundle(address);
     //var formatBundle =  iota.utils.extractJson(bundle);
    
-    res.send('ES UN TX HASH: ' + formatBundle);   
-
+    //res.send('ES UN TX HASH: ');   
+    iota.api.getLatestInclusion(address, function(error, success) {
+        
+        if (error) {
+            console.error(error);
+        } else {
+            res.send(success); 
+        }
+    
+    })
 
 
 
 
     }else if(iota.valid.isAddress(address)){
 
-    res.send('ES UNA ADDRESS');    
+    // Address must be converted from sting to Array
+    var ad = [address];
+    
+    iota.api.getBalances(ad, 100, function(error, success) {
+        
+        if (error) {
+            console.error(error);
+        } else {
+            //console.error(success); 
+            
+            // Get Balance
+            global.balance = success['balances'].toString();
+
+        }
+    
+    })
+
+    
+    iota.api.findTransactionObjects({'addresses': ad}, function(error, success) {
+        
+        if (error) {
+            console.error(error);
+        } else {
+            //console.error(success); 
+            global.txs = success;
+
+            global.num = success.length;
+
+
+
+
+
+        }
+    
+    })
+    
+    // Render View
+    //res.send('El balance es: ' + balance + 'i');
+    res.render('results', { balance: global.balance, address : address, num_txs: global.num, txs: global.txs });
+
+
+
 
     }else{
 

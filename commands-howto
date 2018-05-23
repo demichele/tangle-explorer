@@ -28,6 +28,7 @@ DEBUG=explorer:* npm run devstart
 10. Instalar validator para manejar POSTS
 - npm install express-validator
 - npm install express-parameters
+- npm install moment
 
 11. Instalar libreria de IOTA
 - npm install iota.lib.js

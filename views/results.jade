@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  
+  h1= "Tangle Stateless Explorer"
+
+  <form method="POST" action="/address">
+
+  <input type="text" name="address" value="" placeholder="Ingrese una address o hash"/>
+
+  <input type="submit" value="buscar"/>
+
+  </form>
+
+
+  <hr/>
+  La Dirección: #{address}
+  <br/>
+  El Balance: #{balance} i 
+
+  <hr/>
+  | <h1> Transacciones:  #{num_txs} </h1>
+      
+  <br/>
+
+
+  
+  each val in txs
+
+     | <div> <a href="/transaction/#{val.hash}">  #{val.hash} </a></div>
